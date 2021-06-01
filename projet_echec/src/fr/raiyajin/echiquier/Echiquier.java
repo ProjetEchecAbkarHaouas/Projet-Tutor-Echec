@@ -2,6 +2,7 @@ package fr.raiyajin.echiquier;
 import fr.raiyajin.projet_echec.*;
 public class Echiquier {
 	Case[][] echiquier;
+	Piece piece;
 
 	//pièce noires;
 	Pion Pnoir = new Pion("Pion", "♟️");
@@ -72,5 +73,60 @@ public class Echiquier {
 			s = s + "|\n-----------------------------------\n";
 		}
 		System.out.println(s); 
+	}
+	public Piece getPiece(int x, int y) {
+		return echiquier[x][y].getPiece();
+	}
+	
+	public void setPiece(int x, int y) {
+		if (piece != null) {
+			piece.setX(x);
+			piece.setY(y);
+		}
+		
+	}
+	public boolean cheminLibre(int x1, int y1, int x2, int y2) {
+
+		int xDistance = x2 - x1;
+		int yDistance = y2 - y1;
+		int xDir = 0;
+		int yDir = 0;
+		int size = 0;
+
+		if (xDistance < 0) {
+			xDir = -1;
+		} else if (xDistance > 0) {
+			xDir = 1;
+		}
+
+		if (yDistance < 0) {
+			yDir = -1;
+		} else if (yDistance > 0) {
+			yDir = 1;
+		}
+
+		if (xDistance != 0) {
+			size = Math.abs(xDistance) - 1;
+		} else {
+			size = Math.abs(yDistance) - 1;
+		}
+		// change on x and y
+
+		for (int i = 0; i < size; i++) {
+			x1 += xDir;
+			y1 += yDir;
+
+			if (getPiece(x1, y1) != null) {
+				return false;
+			}
+		}
+		return true;
+
+	}
+	
+	public void deplacer(int x, int y, Piece piece) { //à changer sous format [a0-h8];
+		echiquier[piece.getX()][piece.getY()] = new Case();
+		piece.deplacement(x, y, piece);
+		echiquier[x][y] = new Case(piece);
 	}
 }

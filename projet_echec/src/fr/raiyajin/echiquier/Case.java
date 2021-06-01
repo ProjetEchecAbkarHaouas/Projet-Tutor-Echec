@@ -13,6 +13,10 @@ public class Case {
 		
 	}
 
+	public Piece getPiece() {
+		return this.piece;
+	}
+
 
 	/** toString permet affichage de case vide ou case pièce [voirtestPiece] **/
 	public String toString() {

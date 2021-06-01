@@ -5,7 +5,7 @@ public abstract class Piece {
 	String apparence;
 	int x;
 	int y;
-	
+	public boolean premiereAction;
 	
 	public Piece() {
 		nom = "undefined";
@@ -46,13 +46,39 @@ public abstract class Piece {
 		return s ;
 	}
 	
-	public abstract int coupPossible(int x, int y, int x2, int y2);
+	public int getX() {
+		return this.x;
+	}
+
+	public void setX(int newX) {
+		this.x = newX;
+	}
+
+	public int getY() {
+		return this.y;
+	}
+
+	public void setY(int newY) {
+		this.y = newY;
+	}
+	
+	public abstract boolean coupPossible(int x, int y, int x2, int y2);
 
 
 	
-	public void deplacement() {
-		//TODO
-	}
+	public void deplacement(int x, int y, Piece nom) {
+		if (this.coupPossible(nom.getX(),nom.getY(), x, y) != true) {
+			System.out.println("Impossible d'atteindre cette case avec cette pièce.");
+		}
+
+		else {
+			nom.setX(x);
+			nom.setY(y);
+		}
+
+
+		}
+	
 	
 	public void manger() {
 		//TODO
