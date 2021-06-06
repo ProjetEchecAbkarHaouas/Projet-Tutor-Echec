@@ -110,7 +110,7 @@ public class Echiquier {
 		} else {
 			size = Math.abs(yDistance) - 1;
 		}
-		// change on x and y
+
 
 		for (int i = 0; i < size; i++) {
 			x1 += xDir;
@@ -124,9 +124,15 @@ public class Echiquier {
 
 	}
 	
-	public void deplacer(int x, int y, Piece piece) { //à changer sous format [a0-h8];
-		echiquier[piece.getX()][piece.getY()] = new Case();
-		piece.deplacement(x, y, piece);
-		echiquier[x][y] = new Case(piece);
+	public void deplacer(int x, int y, int x2, int y2) { //à changer sous format [a0-h8].
+		if (echiquier[x2][y2].getPiece() == null) { //vérifie que la case soit vide.
+			echiquier[x][y].getPiece();
+			if (piece.coupPossible(x, y , x2, y2) == true) {
+				echiquier[x2][y2] = new Case(piece);
+				echiquier[x][y] = new Case();
+			}
+			
+	
 	}
+}
 }

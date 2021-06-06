@@ -8,18 +8,29 @@ public class Roi extends Piece{
 		this.nom = nom;
 		this.apparence = apparence;
 	}
-	public int coupPossible(int x, int y, int x2, int y2) {
-		//TODO
-	};
-	
-	
-	public void deplacement() {
-		//TODO
-	}
-
-	
-	public void estVaincu() {
+	public boolean coupPossible(int x, int y, int x2, int y2) {
+		boolean possible = true;
 		
+		int couleur = Couleur();
+		
+		if (couleur == 1) {
+			if (x-x2<= 1 && y-y2<=1 || x2-x<=1 && y2-y<=1) {
+			
+			}
+		else {
+			possible = false;
+			
+			}
+		}
+		return possible;
 	}
-
+	
+	public boolean roiEstVaincu() {
+		boolean Vaincu = false;
+		if (Vaincu == false) {
+			//Toutes les conditions qui mettent en échec le roi
+		}
+		return Vaincu;
+			
+ 	}
 }

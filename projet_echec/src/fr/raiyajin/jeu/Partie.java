@@ -18,7 +18,7 @@ public class Partie {
 	
 	
 	public void init() {
-		System.out.println("Sélectionner une case avec une pièce");
+		System.out.println("Sélectionner une case départ arrivé ainsi : <a1 a2>");
 		Scanner nomCaseDep = new Scanner(System.in);
 		
 		
@@ -29,6 +29,19 @@ public class Partie {
 		Joueur Joueur2 = new Joueur();
 		Echiquier board = new Echiquier();
 		board.initialiser();
+		
+		int tour = 1;
+		while (roiEstVaincu() == true) {
+			if (tour%2 == 0) {
+				System.out.println("Tour du joueur 1");
+				//traduire input en meth avec .deplacer()
+				
+			}
+			else {
+				System.out.println("Tour du joueur 2");
+				//traduire input en meth avec .deplacer()
+			}
+		}
 		
 
 

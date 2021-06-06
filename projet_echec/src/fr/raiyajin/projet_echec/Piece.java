@@ -5,6 +5,8 @@ public abstract class Piece {
 	String apparence;
 	int x;
 	int y;
+	String[] Blanc = {"♔", "♕", "♖", "♗", "♘", "♙"};
+	String[] Noir = {"♚", "♛", "♜", "♝", "♞", "♟"};
 	public boolean premiereAction;
 	
 	public Piece() {
@@ -12,7 +14,20 @@ public abstract class Piece {
 		apparence = "undefined";
 		
 	}
-
+	
+	public int Couleur() {
+		int couleur = 0;
+		for (int i=0; i<Blanc.length; i++) {
+			if (this.apparence == Blanc[i]) {
+				couleur = 1;
+				
+			}
+			else if (this.apparence == Noir[i]){
+				couleur = 2;
+			}
+		}
+		return couleur;
+	}
 	
 	public Piece(String nom, String app) {
 		this.nom = nom;
