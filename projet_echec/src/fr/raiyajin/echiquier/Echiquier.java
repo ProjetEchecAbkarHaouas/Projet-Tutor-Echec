@@ -29,7 +29,7 @@ public class Echiquier {
 	}
 
 	
-	public void initialiser() {
+	public void initialiser() { //Créer l'échiquier avec les pièces à leur emplacements de base
 		echiquier[0][0] = new Case(Tnoir);
 		echiquier[0][1] = new Case(Cnoir);
 		echiquier[0][2] = new Case(Fnoir);
@@ -85,7 +85,7 @@ public class Echiquier {
 		}
 		
 	}
-	public boolean cheminLibre(int x1, int y1, int x2, int y2) {
+	public boolean cheminLibre(int x1, int y1, int x2, int y2) { //vérifie qu'il n'y a pas de pièce qui bloque
 
 		int xDistance = x2 - x1;
 		int yDistance = y2 - y1;
@@ -124,15 +124,23 @@ public class Echiquier {
 
 	}
 	
-	public void deplacer(int x, int y, int x2, int y2) { //à changer sous format [a0-h8].
-		if (echiquier[x2][y2].getPiece() == null) { //vérifie que la case soit vide.
-			echiquier[x][y].getPiece();
-			if (piece.coupPossible(x, y , x2, y2) == true) {
-				echiquier[x2][y2] = new Case(piece);
-				echiquier[x][y] = new Case();
-			}
-			
 	
+	
+	public void deplacer(int x, int y, int x2, int y2) { //à changer sous format [a0-h8].
+		if (echiquier[x2][y2].getPiece() == null && echiquier[x][y].getPiece() != null) { //vérifie que la case soit vide.
+			Piece P = echiquier[x][y].getPiece();
+			if (P.coupPossible(x, y , x2, y2) == true && this.cheminLibre(x, y, x2, y2)) {
+				echiquier[x2][y2] = new Case(P);
+				echiquier[x][y] = new Case();
+				
+			}
+			else {
+				System.out.println("Coup impossible : chemin bloqué.");
+				}
+			}
+		else {
+			System.out.println("Coup impossible : case non vide");
+		}
+		}
 	}
-}
-}
+

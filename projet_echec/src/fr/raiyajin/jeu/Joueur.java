@@ -4,9 +4,9 @@ import java.util.*;
 
 
 public class Joueur {
-	private String nom;
+	private String nom;	//nom du joueur
 	
-	public Joueur(String nom) {
+	public Joueur(String nom) { //Constructeur par défaut
 		this.nom = nom;
 	}
 	
@@ -15,20 +15,20 @@ public class Joueur {
 		
 	}
 	
-	public String getNom() {
+	public String getNom() { //récupère le nom du joueur
 		return this.nom;
 	}
 	
-	public void setNom(String nom) {
+	public void setNom(String nom) { //modifie le nom du joueur
 		this.nom = nom;
 	}
 	
-	public void init() {
+	public void init() { //méthode pour permettre au joueur de se nommer
 
 		System.out.println("Entrez le nom du joueur");
 		Scanner nom_joueur = new Scanner(System.in);
 		this.setNom(nom_joueur.nextLine());
-		System.out.println("Le nom du joueur est: "+ this.getNom());
+
 		
 		
 	}
